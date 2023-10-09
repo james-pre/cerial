@@ -1,6 +1,6 @@
 {
 	"name": "cerial",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Serialization and deserialization made easy",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
