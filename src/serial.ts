@@ -13,7 +13,7 @@ export type PrimitiveValue<P extends SerialPrimitive = SerialPrimitive> = P exte
  * @param serialType The serial primitive type.
  * @returns The JavaScript type name as a string.
  */
-export function primitiveValue(serialType: SerialPrimitive): string {
+export function serialPrimitiveValue(serialType: SerialPrimitive): string {
 	return serialType == 'BigInt64' || serialType == 'BigUint64' ? 'bigint' : 'number';
 }
 
@@ -314,8 +314,8 @@ function serialize(this: Serializable): Uint8Array {
 			throw new TypeError(errorPrefix + 'Value is not an array');
 		}
 
-		if (!length && isSerialPrimitive(type) && typeof value !== primitiveValue(type)) {
-			throw new TypeError(errorPrefix + 'Value is not a ' + primitiveValue(type));
+		if (!length && isSerialPrimitive(type) && typeof value !== serialPrimitiveValue(type)) {
+			throw new TypeError(errorPrefix + 'Value is not a ' + serialPrimitiveValue(type));
 		}
 
 		if (typeof value == 'string') {
