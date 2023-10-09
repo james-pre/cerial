@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"module": "ESNext",
+		"target": "ES2020",
+		"moduleResolution": "node",
+		"outDir": "dist",
+		"typeRoots": ["node_modules/@types"],
+		"types": ["jest"],
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"noImplicitThis": true,
+		"declaration": true,
+		"experimentalDecorators": true
+	},
+	"files": ["src/index.ts"],
+	"typedocOptions": {
+		"entryPoints": ["src/index.ts"],
+		"out": "docs"
+	},
+	"include": ["./**/*"],
+	"exclude": ["node_modules"]
+}
