@@ -39,7 +39,6 @@ const contexts = [
 		platform: 'neutral',
 		bundle: true,
 	}),
-
 ];
 
 const promises = [];
