@@ -6,7 +6,7 @@ export type SerialPrimitive = 'Int8' | 'Uint8' | 'Int16' | 'Uint16' | 'Int32' | 
 /**
  * Represents the corresponding Javascript types for serial primitives.
  */
-export type PrimitiveValue<P extends SerialPrimitive = SerialPrimitive> = P extends 'BigInt64' | 'BigUint64' ? bigint : number;
+export type SerialPrimitiveValue<P extends SerialPrimitive = SerialPrimitive> = P extends 'BigInt64' | 'BigUint64' ? bigint : number;
 
 /**
  * Get the JavaScript type name for a given serial primitive.
