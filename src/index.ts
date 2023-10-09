@@ -374,8 +374,9 @@ function serialize(this: Serializable): Uint8Array {
  * @param instance An optional instance to populate with the deserialized data.
  * @returns The deserialized instance.
  */
-function Deserialize(this: typeof Serializable, data: ArrayBuffer, instance: Serializable = new this()): Serializable {
-	const view = new DataView(data);
+function Deserialize(this: typeof Serializable, data: ArrayBuffer | ArrayBufferView, instance: Serializable = new this()): Serializable {
+	const buffer = 'buffer' in data ? data.buffer : data;
+	const view = new DataView(buffer);
 	let offset = 0;
 	for (const [key, def] of this.__serial__) {
 		const size = sizeof(def),
@@ -391,14 +392,14 @@ function Deserialize(this: typeof Serializable, data: ArrayBuffer, instance: Ser
 		}
 
 		if (length) {
-			const buffer = data.slice(offset, offset + size);
+			const arraybuffer = buffer.slice(offset, offset + size);
 			if (isSerialPrimitive(type)) {
 				instance[key] ||= [];
 				for (let i = 0; i < length; i++) {
 					instance[key][i] = view['get' + type](offset + i * (size / length));
 				}
 			} else if (type === 'string') {
-				const charArray: number[] = [...new Uint8Array(buffer)];
+				const charArray: number[] = [...new Uint8Array(arraybuffer)];
 				const lastChar = charArray.reduce((index, char, i) => (char == 0 ? index : i), 0) + 1;
 				instance[key] = charArray
 					.slice(0, lastChar || charArray.length)
@@ -408,7 +409,7 @@ function Deserialize(this: typeof Serializable, data: ArrayBuffer, instance: Ser
 		} else if (isSerialPrimitive(type)) {
 			instance[key] = view['get' + type](offset);
 		} else if (isSerializeableStatic(type)) {
-			instance[key] = type.Deserialize(data.slice(offset, offset + size));
+			instance[key] = type.Deserialize(buffer.slice(offset, offset + size));
 		} else {
 			throw new TypeError(errorPrefix + 'Invalid type');
 		}
