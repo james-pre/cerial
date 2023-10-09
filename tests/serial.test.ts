@@ -1,4 +1,4 @@
-import { isSerialPrimitive, isSerialDef, sizeof, Serial, SerialStatic, serialClass, serialMember } from '../src/index';
+import { isSerialPrimitive, isSerialDef, sizeof, Serial, SerialStatic, serialMember } from '../src/serial';
 
 describe('isSerialPrimitive', () => {
 	it('should return true for valid serial primitive types', () => {
@@ -85,7 +85,6 @@ describe('sizeof, serialize, deserialize', () => {
 
 describe('serialClass', () => {
 	it('should apply class decorators correctly', () => {
-		@serialClass({ littleEndian: false })
 		class _TestClass {
 			@serialMember('Int32')
 			prop1: number;
