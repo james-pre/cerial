@@ -22,8 +22,8 @@
 		"url": "git+https://github.com/dr-vortex/cerial.git"
 	},
 	"keywords": [
-		"log",
-		"logger"
+		"serial",
+		"serialize"
 	],
 	"author": "Dr. Vortex",
 	"license": "MIT",
