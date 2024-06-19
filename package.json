@@ -19,18 +19,18 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/dr-vortex/cerial.git"
+		"url": "git+https://github.com/james-pre/cerial.git"
 	},
 	"keywords": [
 		"serial",
 		"serialize"
 	],
-	"author": "Dr. Vortex",
+	"author": "James P.",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/dr-vortex/cerial/issues"
+		"url": "https://github.com/james-pre/cerial/issues"
 	},
-	"homepage": "https://github.com/dr-vortex/cerial#readme",
+	"homepage": "https://github.com/james-pre/cerial#readme",
 	"devDependencies": {
 		"@types/jest": "^29.5.3",
 		"@typescript-eslint/eslint-plugin": "^6.2.0",
